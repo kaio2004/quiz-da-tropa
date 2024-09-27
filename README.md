@@ -77,16 +77,34 @@
     <h1>Quiz da Tropa das Greludas</h1>
     <div class="quiz-container">
         <div class="question">
-            <p>1. Qual é a especialidade da Marlene?</p>
-            <label class="option"><input type="radio" name="question1" value="a"> Contar mentiras</label>
-            <label class="option"><input type="radio" name="question1" value="b"> Cozinhar</label>
-            <label class="option"><input type="radio" name="question1" value="c"> Dançar</label>
+            <p>1. Se você tivesse que planejar uma festa, qual das Greludas você chamaria para ajudar?</p>
+            <label class="option"><input type="radio" name="question1" value="Marlene"> Marlene (ela sempre tem ideias mirabolantes)</label>
+            <label class="option"><input type="radio" name="question1" value="Benedita"> Benedita (ela traz os melhores petiscos)</label>
+            <label class="option"><input type="radio" name="question1" value="Márcia"> Márcia (ela sempre anima a galera)</label>
         </div>
         <div class="question">
-            <p>2. O que a Benedita gosta de fazer?</p>
-            <label class="option"><input type="radio" name="question2" value="a"> Jogar bingo</label>
-            <label class="option"><input type="radio" name="question2" value="b"> Dar golpes</label>
-            <label class="option"><input type="radio" name="question2" value="c"> Fazer crochê</label>
+            <p>2. Qual Greluda você escolheria para uma competição de dança?</p>
+            <label class="option"><input type="radio" name="question2" value="Marlene"> Marlene (ela tem passos únicos)</label>
+            <label class="option"><input type="radio" name="question2" value="Lucinda"> Lucinda (ela dança do jeito dela)</label>
+            <label class="option"><input type="radio" name="question2" value="Márcia"> Márcia (a palhaça sempre arrasa)</label>
+        </div>
+        <div class="question">
+            <p>3. Se você estivesse em apuros, quem você chamaria para te ajudar?</p>
+            <label class="option"><input type="radio" name="question3" value="Benedita"> Benedita (ela sempre dá um jeito)</label>
+            <label class="option"><input type="radio" name="question3" value="Josefa"> Josefa (ela conhece todos os esquemas)</label>
+            <label class="option"><input type="radio" name="question3" value="Lucinda"> Lucinda (mesmo sem querer, ela acaba ajudando)</label>
+        </div>
+        <div class="question">
+            <p>4. Qual Greluda é a mais engraçada e sempre conta piadas?</p>
+            <label class="option"><input type="radio" name="question4" value="Márcia"> Márcia (a palhaça do grupo)</label>
+            <label class="option"><input type="radio" name="question4" value="Marlene"> Marlene (com suas histórias malucas)</label>
+            <label class="option"><input type="radio" name="question4" value="Benedita"> Benedita (sempre com uma piada na ponta da língua)</label>
+        </div>
+        <div class="question">
+            <p>5. Se você pudesse fazer uma viagem com uma das Greludas, quem seria?</p>
+            <label class="option"><input type="radio" name="question5" value="Lucinda"> Lucinda (as aventuras dela são inesquecíveis)</label>
+            <label class="option"><input type="radio" name="question5" value="Marlene"> Marlene (sempre arranja confusão)</label>
+            <label class="option"><input type="radio" name="question5" value="Josefa"> Josefa (os trambiques são garantidos)</label>
         </div>
         <button onclick="submitQuiz()">Enviar Respostas</button>
     </div>
@@ -97,7 +115,28 @@
 
     <script>
         function submitQuiz() {
-            alert("Obrigado por participar do quiz da Tropa das Greludas!");
+            const answers = {
+                "Marlene": 0,
+                "Benedita": 0,
+                "Lucinda": 0,
+                "Márcia": 0,
+                "Josefa": 0
+            };
+
+            const question1 = document.querySelector('input[name="question1"]:checked');
+            const question2 = document.querySelector('input[name="question2"]:checked');
+            const question3 = document.querySelector('input[name="question3"]:checked');
+            const question4 = document.querySelector('input[name="question4"]:checked');
+            const question5 = document.querySelector('input[name="question5"]:checked');
+
+            if (question1) answers[question1.value]++;
+            if (question2) answers[question2.value]++;
+            if (question3) answers[question3.value]++;
+            if (question4) answers[question4.value]++;
+            if (question5) answers[question5.value]++;
+
+            const result = Object.keys(answers).reduce((a, b) => answers[a] > answers[b] ? a : b);
+            alert(`Você se identifica mais com: ${result}!`);
         }
     </script>
 </body>
